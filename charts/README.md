@@ -11,6 +11,15 @@ $ helm repo add lockc https://rancher-sandbox.github.io/lockc-helm-charts/
 $ helm install --create-namespace -n lockc lockc lockc
 ```
 
+If it is necessary to change lockcd config please create `lockc.toml` or copy it from
+[lockc config](https://github.com/rancher-sandbox/lockc/blob/main/contrib/etc/lockc/lockc.toml)
+
+Add changes to `lockc.toml` and create configMap in lockc namespace
+```console
+kubectl create configmap -n lockc lockc --from-file=./lockc.toml
+helm upgrade -n lockc lockc lockc --set lockcd.config.enabled=true
+```
+
 This will install lockc on the Kubernetes cluster in the default configuration.
 
 The default configuration values should be good enough for the majority of
@@ -43,15 +52,16 @@ chart and their default values.
 
 | Parameter                        | Description                                                                                                              | Default             |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------ | ------------------- |
-| `nameOverride`                   | Replaces the name of the chart in the `Chart.yaml` file when this is is used to construct Kubernetes object names         | ``                  |
+| `lockcd.image.repository`        | The `lockc` container image to be used                                                                       | `ghcr.io/rancher-sandbox/lockc` |
+| `lockcd.image.tag`               | The tag of the `lockc` container image to be used                                                                        | ``                  |
+| `lockcd.debug.enabled`           | Enable debug mode for lockc daemon                                                                                       | `false`             |
+| `lockcd.config.enabled`          | Enable custom configuration provided in separate configMap. If `false` dafault config will be used                       | `false`             |
+| `lockcd.config.name`             | Name of ConfigMap with `lockc.toml` file. It will be mounted under `/etc/lockc/lockc.toml`                               | `lockc`             |
+| `nameOverride`                   | Replaces the name of the chart in the `Chart.yaml` file when this is is used to construct Kubernetes object names        | ``                  |
 | `fullnameOverride`               | Completely replaces the generated name                                                                                   | ``                  |
-| `imagePullSecrets`               | Secrets to be used to pull container images from a Private Registry. Refer to [official Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) | `[]` |
-| `image.repository`               | The `lockc` container image to be used                                                                      | `ghcr.io/rancher-sandbox/lockc` |
-| `image.tag`                      | The tag of the `lockc` container image to be used. When left empty chart's `AppVersion` is going to be used | ``                  |
-| `podAnnotations`                 | Extra annotations to add to the `lockc` deployment                                                          | `{}`                |
-| `nodeSelector`                   | `nodeSelector` for the `lockc` deployment                                                                   | `{}`                |
-| `tolerations`                    | `tolerations` for the `lockc` deployment                                                                    | `{}`                |
-| `affinity`                       | `affinity` rules for the `lockc` deployment                                                                 | `{}`                |
-| `policyServer.replicaCount`      | Replica size for the `policy-server` deployment                                                                          | `1`                 |
-| `policyServer.image.repository`  | The `policy-server` container image to be used                                                                           | `ghcr.io/rancher-sandbox/lockc` |
-| `policyServer.image.tag`         | The tag of the `policy-server` container image to be used                                                                | ``                  |
+| `podAnnotations`                 | Extra annotations to add to the `lockc` deployment                                                                       | `{}`                |
+| `nodeSelector`                   | `nodeSelector` for the `lockc` deployment                                                                                | `{}`                |
+| `tolerations`                    | `tolerations` for the `lockc` deployment                                                                                 | `{}`                |
+| `affinity`                       | `affinity` rules for the `lockc` deployment                                                                              | `{}`                |
+| ---------------------------------| ------------------------------------------------------------------------------------------------------------------------ | ------------------- |
+
