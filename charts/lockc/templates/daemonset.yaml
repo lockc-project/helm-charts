@@ -29,8 +29,10 @@ spec:
           value: "1"
 {{- end }}
         volumeMounts:
+{{- if .Values.lockcd.config.enabled }}
         - mountPath: /etc/lockc
           name: lockc-config
+{{- end }}
         - name: bpffs
           mountPath: /sys/fs/bpf
         - name: bin-runc
@@ -47,9 +49,11 @@ spec:
       tolerations:
       - operator: Exists
       volumes:
+{{- if .Values.lockcd.config.enabled }}
       - configMap:
-          name: lockc
+          name: {{ .Values.lockcd.config.name }}
         name: lockc-config
+{{- end }}
       - name: bpffs
         hostPath:
           path: /sys/fs/bpf

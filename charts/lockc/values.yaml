@@ -1,7 +1,9 @@
 lockcd:
   image:
-    repository: docker.io/vadorovsky/lockcd
-    pullPolicy: IfNotPresent
-    tag: "latest"
+    repository: ghcr.io/rancher-sandbox/lockc
+    tag: "v0.1.4"
   debug:
     enabled: false
+  config:
+    enabled: false
+    name: "lockc"
