@@ -3,6 +3,23 @@ entries:
   lockc:
   - apiVersion: v2
     appVersion: v0.1.4
+    created: "2021-12-10T14:12:00.600777478Z"
+    description: A Helm chart for Kubernetes lockc agent and daemon
+    digest: a62fc3315fff8a7e682dcbe24ea22dbbefbcef35b2f5ac714347dd750f7cbb59
+    home: https://rancher-sandbox.github.io/lockc/
+    icon: https://github.com/rancher-sandbox/lockc/blob/main/docs/src/images/logo-horizontal-lockc.png
+    maintainers:
+    - email: mrostecki@suse.com
+      name: Michal Rostecki
+    - email: mjura@suse.com
+      name: Michal Jura
+    name: lockc
+    type: application
+    urls:
+    - https://github.com/rancher-sandbox/lockc-helm-charts/releases/download/lockc-0.1.4/lockc-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: v0.1.4
     created: "2021-12-09T15:12:14.372607755Z"
     description: A Helm chart for Kubernetes lockc agent and daemon
     digest: 9e3e958e80d25e03f4ff68776cca4b6aa11b76cce575244d36b38c141307eefa
@@ -35,4 +52,4 @@ entries:
     urls:
     - https://github.com/rancher-sandbox/lockc-helm-charts/releases/download/lockc-0.1.0/lockc-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-09T15:12:14.372614956Z"
+generated: "2021-12-10T14:12:00.600789378Z"
