@@ -8,7 +8,7 @@ For more information refer to the [official lockc website](https://rancher-sandb
 For example:
 ```console
 $ helm repo add lockc https://rancher-sandbox.github.io/lockc-helm-charts/
-$ helm install --create-namespace -n lockc lockc lockc
+$ helm install --create-namespace -n lockc lockc lockc/lockc
 ```
 
 If it is necessary to change lockcd config please create `lockc.toml` or copy it from
@@ -16,8 +16,8 @@ If it is necessary to change lockcd config please create `lockc.toml` or copy it
 
 Add changes to `lockc.toml` and create configMap in lockc namespace
 ```console
-kubectl create configmap -n lockc lockc --from-file=./lockc.toml
-helm upgrade -n lockc lockc lockc --set lockcd.config.enabled=true
+$ kubectl create configmap -n lockc lockc --from-file=./lockc.toml
+$ helm upgrade -n lockc lockc lockc --set lockcd.config.enabled=true
 ```
 
 This will install lockc on the Kubernetes cluster in the default configuration.
