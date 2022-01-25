@@ -1,11 +1,11 @@
 apiVersion: v2
 name: lockc
-version: 0.1.4
+version: 0.1.5
 description: A Helm chart for Kubernetes lockc agent and daemon
 type: application
 icon: https://github.com/rancher-sandbox/lockc/blob/main/docs/src/images/logo-horizontal-lockc.png
 home: https://rancher-sandbox.github.io/lockc/
-appVersion: "v0.1.4"
+appVersion: "v0.1.5"
 maintainers:
   - name: Michal Rostecki
     email: mrostecki@suse.com
