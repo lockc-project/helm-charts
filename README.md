@@ -7,8 +7,9 @@ For more information refer to the [official lockc website](https://rancher-sandb
 
 For example:
 ```console
+$ kubectl apply -f https://rancher-sandbox.github.io/lockc-helm-charts/namespace.yaml
 $ helm repo add lockc https://rancher-sandbox.github.io/lockc-helm-charts/
-$ helm install --create-namespace -n lockc lockc lockc/lockc
+$ helm install -n lockc lockc lockc/lockc
 ```
 
 If it is necessary to change lockcd config please create `lockc.toml` or copy it from
