@@ -24,9 +24,9 @@ spec:
         env:
         - name: LOCKC_CHECK_LSM_SKIP
           value: "1"
-{{- if .Values.lockcd.debug.enabled }}
-        - name: LOCKC_DEBUG
-          value: "1"
+{{- if .Values.lockcd.log.level }}
+        - name: LOCKC_LOG_LEVEL
+          value: {{ .Values.lockcd.log.level }}
 {{- end }}
         volumeMounts:
 {{- if .Values.lockcd.config.enabled }}
