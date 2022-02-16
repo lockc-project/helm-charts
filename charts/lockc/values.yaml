@@ -1,9 +1,12 @@
 lockcd:
   image:
     repository: ghcr.io/rancher-sandbox/lockc
-    tag: "v0.1.5"
+    tag: "v0.1.6"
   debug:
     enabled: false
   config:
     enabled: false
     name: "lockc"
+  log:
+    # Possible values "trace", "debug", "info", "warn", "error"
+    level: "info"
