@@ -1,6 +1,6 @@
 lockcd:
   image:
-    repository: ghcr.io/rancher-sandbox/lockc
+    repository: ghcr.io/lockc-project/lockc
     tag: "v0.1.6"
   debug:
     enabled: false
